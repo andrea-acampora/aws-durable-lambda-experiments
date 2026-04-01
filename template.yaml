@@ -8,8 +8,8 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      CodeUri: hello-world/
-      Handler: app.lambdaHandler
+      CodeUri: 00-hello-world/
+      Handler: handler.lambdaHandler
       Runtime: nodejs24.x
       Timeout: 900
       Architectures:
@@ -28,7 +28,7 @@ Resources:
         Sourcemap: true
         Format: cjs
         EntryPoints:
-          - app.ts
+          - src/handler.ts
 
 Outputs:
   HelloWorldFunctionUrl:

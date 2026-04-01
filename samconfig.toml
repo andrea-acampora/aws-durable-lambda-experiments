@@ -3,6 +3,7 @@
 version = 0.1
 
 [default.global.parameters]
+profile = "andrea-aws-experiments"
 stack_name = "aws-durable-lambda-experiments"
 region = "eu-west-1"
 

@@ -4,7 +4,7 @@ import {
   OperationType,
 } from "@aws/durable-execution-sdk-js-testing";
 import { APIGatewayProxyEvent } from "aws-lambda";
-import { lambdaHandler } from "../../app";
+import { lambdaHandler } from "../src/handler";
 
 describe("Tests for durable hello world handler", () => {
   beforeAll(() =>
