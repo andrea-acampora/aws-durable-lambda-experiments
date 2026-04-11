@@ -1,8 +1,7 @@
 {
-  "name": "hello-world",
+  "name": "aws-durable-functions-experiments",
   "version": "1.0.0",
-  "description": "hello world sample for NodeJS",
-  "main": "src/handler.js",
+  "description": "AWS Durable Functions Experiments",
   "scripts": {
     "test": "jest",
     "compile": "tsc"

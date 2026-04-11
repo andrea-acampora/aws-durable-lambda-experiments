@@ -29,7 +29,7 @@ Test a single function by invoking it directly with a test event. An event is a 
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-$ sam local invoke HelloWorldFunction --event 00-hello-world/events/event.json
+$ sam local invoke HelloWorldFunction --event events/function_url.json
 ```
 
 For durable functions, you can view the execution and execution history:
@@ -43,14 +43,14 @@ $ sam local execution history $EXECUTION_ARN
 
 Unit tests are written using the [`@aws/durable-execution-sdk-js-testing`](https://github.com/aws/aws-durable-execution-sdk-js) library. The testing library allows you to simulate running your execution locally while mocking any dependencies.
 
-Tests are located in every experiment folder under `tests/handler.test.ts` and demonstrate:
+Tests are located in every experiment folder (`handler.test.ts`) and demonstrate:
 
 - Testing durable function execution with the `LocalDurableTestRunner`
 - Verifying function results and response structure
 - Asserting on durable execution operations using `OperationType` and `OperationStatus`
 
 ```bash
-$ cd hello-world
+$ cd experiments
 hello-world$ npm install
 hello-world$ npm run test
 ```

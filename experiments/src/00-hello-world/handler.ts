@@ -2,16 +2,12 @@ import {
   DurableContext,
   withDurableExecution,
 } from "@aws/durable-execution-sdk-js";
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 /**
  * Durable Lambda function handler.
  */
 export const lambdaHandler = withDurableExecution(
-  async (
-    event: APIGatewayProxyEvent,
-    context: DurableContext,
-  ): Promise<APIGatewayProxyResult> => {
+  async (_event: Event, context: DurableContext): Promise<string> => {
     context.logger.info("Starting durable hello world execution");
 
     // Execute durable step
@@ -22,11 +18,6 @@ export const lambdaHandler = withDurableExecution(
 
     context.logger.info("Execution completed successfully");
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: message,
-      }),
-    };
+    return message;
   },
 );
