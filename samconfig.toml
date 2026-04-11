@@ -4,7 +4,7 @@ version = 0.1
 
 [default.global.parameters]
 profile = "andrea-aws-experiments"
-stack_name = "aws-durable-lambda-experiments"
+stack_name = "aws-durable-functions-experiments"
 region = "eu-west-1"
 
 [default.build.parameters]
@@ -18,7 +18,7 @@ lint = true
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
-s3_prefix = "aws-durable-lambda-experiments"
+s3_prefix = "aws-durable-functions-experiments"
 profile = "andrea-aws-experiments"
 disable_rollback = false
 image_repositories = []
