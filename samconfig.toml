@@ -3,7 +3,6 @@
 version = 0.1
 
 [default.global.parameters]
-profile = "andrea-aws-experiments"
 stack_name = "aws-durable-functions-experiments"
 region = "eu-west-1"
 
@@ -19,7 +18,6 @@ capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
 s3_prefix = "aws-durable-functions-experiments"
-profile = "andrea-aws-experiments"
 disable_rollback = false
 image_repositories = []
 
