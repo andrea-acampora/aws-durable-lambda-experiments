@@ -5,7 +5,7 @@ import {
 } from "@aws/durable-execution-sdk-js-testing";
 import { lambdaHandler } from "./handler";
 
-xdescribe("Durable Hello World", () => {
+describe("00 - Durable Hello World", () => {
   beforeAll(() =>
     LocalDurableTestRunner.setupTestEnvironment({ skipTime: true }),
   );

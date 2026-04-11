@@ -14,6 +14,8 @@ export const lambdaHandler = withDurableExecution(
       return counter + 10;
     });
 
+    await context.wait("wait-for-2-seconds", { seconds: 2 });
+
     const step2 = await context.step("step-2", async () => {
       context.logger.info(`Step 2 - ${step1} + 20`);
       return step1 + 20;

@@ -7,7 +7,7 @@ import { lambdaHandler } from "./handler";
 
 describe("01 — Sequential Counter", () => {
   beforeAll(() =>
-    LocalDurableTestRunner.setupTestEnvironment({ skipTime: true }),
+    LocalDurableTestRunner.setupTestEnvironment({ skipTime: false }),
   );
   afterAll(() => LocalDurableTestRunner.teardownTestEnvironment());
 
@@ -30,10 +30,12 @@ describe("01 — Sequential Counter", () => {
 
     const operations = execution.getOperations();
 
-    expect(operations).toHaveLength(3);
+    expect(operations).toHaveLength(4);
 
-    operations.forEach((op) => {
-      expect(op.getType()).toBe(OperationType.STEP);
+    operations.forEach((op, index) => {
+      index !== 1
+        ? expect(op.getType()).toBe(OperationType.STEP)
+        : expect(op.getType()).toBe(OperationType.WAIT);
       expect(op.getStatus()).toBe(OperationStatus.SUCCEEDED);
     });
   });
@@ -46,7 +48,8 @@ describe("01 — Sequential Counter", () => {
     await runner.run();
 
     expect(runner.getOperationByIndex(0).getName()).toBe("step-1");
-    expect(runner.getOperationByIndex(1).getName()).toBe("step-2");
-    expect(runner.getOperationByIndex(2).getName()).toBe("step-3");
+    expect(runner.getOperationByIndex(1).getName()).toBe("wait-for-2-seconds");
+    expect(runner.getOperationByIndex(2).getName()).toBe("step-2");
+    expect(runner.getOperationByIndex(3).getName()).toBe("step-3");
   });
 });
