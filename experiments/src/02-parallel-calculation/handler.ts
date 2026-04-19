@@ -13,11 +13,20 @@ export interface ParallelResult {
   total: number;
 }
 
+/**
+ * Durable Lambda function handler that demonstrates parallel execution of steps.
+ * It takes an array of numbers as input, doubles each number in parallel, and then sums the results.
+ * The final result includes the original inputs, the doubled values, and the total sum.
+ */
 export const lambdaHandler = withDurableExecution(
   async (
     event: CustomEvent,
     context: DurableContext,
   ): Promise<ParallelResult> => {
+    /**
+     * Execute the doubling of each number in parallel branches.
+     * Each branch is a separate step that runs concurrently.
+     */
     const parallelResult = await context.parallel(
       "double-all",
       event.values.map(
@@ -29,6 +38,9 @@ export const lambdaHandler = withDurableExecution(
       ),
     );
 
+    /**
+     * Collect the results from all parallel branches.
+     */
     const doubled = parallelResult.getResults();
 
     const total = await context.step("sum-results", async () => {

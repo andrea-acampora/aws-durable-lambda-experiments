@@ -3,6 +3,11 @@ import {
   withDurableExecution,
 } from "@aws/durable-execution-sdk-js";
 
+/**
+ * Simple durable Lambda function handler that demonstrates sequential steps and waiting between them.
+ * Each step builds on the result of the previous one, and there's a wait in between to show how it works.
+ * The final result is the cumulative total after all steps.
+ */
 export const lambdaHandler = withDurableExecution(
   async (_event: Event, context: DurableContext): Promise<number> => {
     const counter = 0;
